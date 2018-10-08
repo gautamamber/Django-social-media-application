@@ -1,0 +1,22 @@
+
+{% extends 'base.html' %}
+{% block body %}
+
+
+<center><h2><b style="font-size: 20px; font-family: monospace;">Registration</b></h2></center>
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<form method="POST">
+	{% csrf_token %}
+	{{ form.as_p }}
+<button class = "buttonmy" type="submit">Signup</button>
+</form>
+
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+

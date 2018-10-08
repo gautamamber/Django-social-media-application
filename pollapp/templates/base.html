@@ -1,0 +1,182 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<title>Nirvachit</title>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<style>
+
+.jumbotron {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+
+
+
+input[type=text] {
+    width: 100%;
+    
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    /*resize: vertical;*/
+} 
+input[type=password] {
+    width: 100%;
+   
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    /*resize: vertical;*/
+} 
+
+input[type=email] {
+    width: 100%;
+    
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    /*resize: vertical;*/
+  }
+
+  input[type=submit] {
+    
+    background-color: #4CAF50;
+    color: white;
+   
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    width: 100%;
+    background-color: #45a049;
+}
+.buttonmy{
+   width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 15px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+@media only screen and (max-width: 320px)
+        {
+            
+            .text{
+                font-size: 15px;
+            }
+          
+        }
+        @media only screen and (min-width: 321px) and (max-width: 480px)
+        {
+            
+            .text{
+                font-size: 15px;
+            }
+         
+        }
+        @media only screen and (min-width: 481px) and (max-width: 600px)
+        {
+            
+            .text{
+                font-size: 17px;
+            }
+           
+        }
+        @media only screen and (min-width: 601px) and (max-width: 768px)
+        {
+           
+            .text{
+                font-size: 17px;
+            }
+           
+        }
+        @media only screen and (min-width: 769px) and (max-width: 1024px)
+        {
+            
+            .text{
+                font-size: 20px;
+            }
+          
+        @media only screen and (min-width: 1025px) and (max-width: 1200px)
+        {
+           
+            .text{
+                font-size: 20px;
+            }
+          
+        }
+        @media only screen and (min-width: 1201px)
+        {
+           
+            .text{
+                font-size:20px;
+            }
+            }
+
+
+</style>
+<body>
+
+<div class="container-fluid">
+<div class="row">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+     
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+    
+      <ul class="nav navbar-nav">
+         <li><a href="/nirvachit/login/">Home</a></li>
+        <li><a href="/nirvachit/news/">Daily News</a></li>
+        <li><a href="/nirvachit/former_minister/">Former Ministers</a></li>
+          <li><a href="/nirvachit/election_updates/">Elections Updates</a></li>
+          <li><a href="/nirvachit/about/">About us</a></li>
+        {% if user.is_authenticated %}
+        
+         <li><a href="/account/change_password">Reset Password</a></li>
+          <li><a href="/nirvachit/logout/">Logout</a></li>
+      </ul>
+      {% else %}
+      {% endif %}
+    </div>
+  </div>
+</nav>
+</div>
+</div>
+{% block body %}
+{% endblock %}
+</body>
+</html>

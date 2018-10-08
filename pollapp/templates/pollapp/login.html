@@ -1,0 +1,99 @@
+
+{% extends 'base.html' %}
+{% block body %}
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12">
+      <center>
+        <b>
+          <i>
+            <h2 style="color: orange;">क्या सिर्फ चुनावों तक अपना मत सीमित रखना उचित है,</h2>
+<h1>आइये अपने मत का प्रयोग करें चुनाव से पहले भी चुनाव के बाद भी </h1>
+<h1 style="color: green;">एक जागरूक समाज के ओर अग्रसर कदम!!
+          </i></h1>
+        </b>
+      </center>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      {% for newss in newa %}
+      <h3><a href="{% url 'pollapp:details' newss.id %}">{{ newss.title }}</a></h3>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid	">
+	<div class="row">
+		<div class="col-sm-5 col-xs-12">
+			<div class="jumbotron jumbotron-fluid">
+  
+   <div class="container">
+<h3>Login</h3>
+<form method="POST">
+{% csrf_token %}
+{{ form.as_p }}
+<a href="password_reset/">Forgot Password</a> <br> <!-- this line will give fully function login system  -->
+<button class = "buttonmy" type="submit">Login</button>
+<h3><a href="/nirvachit/register/">Register</h3></span></a>
+<br>
+</form>
+</div>
+ </div>
+</div>
+<div class="col-sm-7 col-xs-12">
+ {% load static %}
+   
+<div class="w3-content w3-section" >
+  <img class="mySlides" src="{% static "pollapp/images.jpeg" %}" style="width:100%" height="300px">
+  <img class="mySlides" src="{% static "pollapp/image.jpeg" %}" style="width:100%" height="300px">
+  <img class="mySlides" src="{% static "pollapp/index.jpeg" %}" style="width:100%" height="300px">
+</div>
+    
+
+
+
+</div>
+</div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12">
+      <center><b><h1><i>Nirvachit</i></h1></b></center>
+    </div>
+  </div>
+</div>
+
+
+<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";  
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}    
+    x[myIndex-1].style.display = "block";  
+    setTimeout(carousel, 2000); // Change image every 2 seconds
+}
+</script>	
+
+
+
+
+
+{% endblock %}
+
+

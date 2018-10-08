@@ -1,0 +1,85 @@
+from django.db import models
+
+# Create your models here.
+
+from django.urls import reverse
+
+# Create your models here.
+from django.contrib.auth.models import User
+from django.utils import timezone
+
+class Post(models.Model):
+	author = models.ForeignKey('auth.User', on_delete = models.CASCADE)
+	title = models.CharField(max_length= 100)
+	text = models.TextField()
+	image = models.ImageField(upload_to = 'New/%Y/%m/%d', blank = True)
+	created_date = models.DateTimeField(default = timezone.now)
+	published_date = models.DateTimeField(blank = True, null = True)
+	likes = models.ManyToManyField('auth.User', related_name = "likes" , blank = True)
+
+	def publish(self):
+		self.published_date = timezone.now()
+		self.save()
+
+	def __str__(self):
+		return self.title
+
+	def total_likes(self):
+		return self.likes.count()
+
+	
+       
+
+
+	def get_absolute_url(self):
+		return reverse("pollapp:details" , args = [self.id])
+
+class Comment(models.Model):
+	post = models.ForeignKey(Post, on_delete = models.CASCADE, related_name = 'aa')
+	user = models.ForeignKey(User , on_delete = models.CASCADE)
+	# reply = models.ForeignKey('self', null = True, related_name = 'replies', blank = True, on_delete = models.CASCADE)
+	content = models.TextField(max_length = 100)
+	timestamp = models.DateTimeField(auto_now_add = True)
+
+	def __str__(self):
+		return '{}-{}'.format(self.post.title, str(self.user.username))
+
+
+class News(models.Model):
+	author = models.ForeignKey('auth.User', on_delete = models.CASCADE)
+	title = models.CharField(max_length= 100)
+	text = models.TextField()
+	# simage = models.ImageField(upload_to = 'New/%Y/%m/%d', blank = True)
+	created_date = models.DateTimeField(default = timezone.now)
+	published_date = models.DateTimeField(blank = True, null = True)
+
+
+	def publish(self):
+		self.published_date = timezone.now()
+		self.save()
+
+	def __str__(self):
+		return self.title
+
+	def get_absolute_url(self):
+		return reverse("pollapp:details" , args = [self.id])
+
+
+class Facts(models.Model):
+	author = models.ForeignKey('auth.User', on_delete = models.CASCADE)
+	title = models.CharField(max_length= 100)
+	text = models.TextField()
+	# simage = models.ImageField(upload_to = 'New/%Y/%m/%d', blank = True)
+	created_date = models.DateTimeField(default = timezone.now)
+	published_date = models.DateTimeField(blank = True, null = True)
+
+
+	def publish(self):
+		self.published_date = timezone.now()
+		self.save()
+
+	def __str__(self):
+		return self.title
+
+	def get_absolute_url(self):
+		return reverse("pollapp:details" , args = [self.id])

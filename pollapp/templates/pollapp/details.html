@@ -1,0 +1,99 @@
+
+{% extends 'base.html' %}
+{% block body %}
+<div class="coontainer-fluid">
+	<div class="row">
+		<div class="col-xs-12">
+			<h2>{{ posts.title }}</h2>
+	<img src="{{ posts.image.url }}" style="height: 130px; width: auto" alt="....." class="img-responsive"><br>
+	<br>
+	{{ posts.text }}<br>
+	{{ total_likes }} Like{{ total_likes | pluralize }}
+	<hr>
+
+	<form action="{% url 'pollapp:like_post' %}" method="post">
+	{% csrf_token %}
+	{% if is_liked %}
+		<button type="submit" name="post_id" value="{{ posts.id }}">DisLike</button>
+	{% else %}
+	<button type="submit" name="post_id" value="{{posts.id}}">Like</button>
+	{% endif %}
+</form>
+
+
+</center>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="main-comment-section">
+<form method="POST">
+	{% csrf_token %}
+	{{ comment_form.as_p }}
+
+	<input type="submit" value="Submit">
+	
+</form>
+{{ comments.count }} Comment{{ comments|pluralize }}
+	{% for comment in comments %}
+	 <blockquote class="blockquote">
+  <p class="mb-0">{{ comment.content }}</p>
+  <footer class="blockquote-footer">by: <cite title="Source Title">{{comment.user|capfirst}}</cite>
+<!-- <button type="button" name="button" class="rply-btn  btn-outline-dark btn-sm ml-2">Reply</button>
+ -->
+  </footer>
+</blockquote>
+
+
+<div class="replied-comments coontainer mt-2" style="display: none;"> 
+{% for reply in comment.replies.all %}
+ <blockquote class="blockquote">
+  <p class="mb-0"><small>{{ reply.content }}</p>
+  <footer class="blockquote-footer"> by: <cite title="Source Title">{{reply.user|capfirst}}</cite></small>
+
+
+
+  </footer>
+</blockquote>
+
+{% endfor %}
+	<div class="form-group row">
+		<form method="POST">
+	{% csrf_token %}
+	<input type="hidden" name="comment_id" value="{{ comment.id }}">
+	{{ comment_form.as_p }}
+{% if request.user.is_authenticated %}
+	<input type="submit" value="Submit">
+	{% else %}
+	<H3>sorry</H3>
+
+{% endif %}
+</form> 
+	</div>
+</div>
+
+
+	{% endfor %}
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+

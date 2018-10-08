@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+
+</style>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<div class="container">
+    <div class="row">
+        <div class="col-sm-7 col-xs-12">
+            {% for post in posts %}
+            <h2><b><a href="{% url 'pollapp:details' post.id %}">{{ post.title }}</a></b></h2>
+            <p>Published: {{ post.published_date }}</p>
+            <h4><p>{{ post.text|linebreaksbr }}</p></h4>
+            <img src="{% if post.image %} {{ post.image.url }} {% else %} {% static 'img/default.jpg' %} {% endif %}" alt="..." style="height: 300px; width: 300px;" class = "img-responsive ">
+            
+            
+            <br>
+            {% endfor %}
+        </div>
+        <div class="col-sm-5 col-xs-12" style="margin-top: 100px;">
+            <h1>
+                Some Facts:
+            </h1>
+             {% for post in posts %}
+            <h2><b>{{ post.title }}</b></h2>
+            
+            <h4><p>{{ post.text|linebreaksbr }}</p></h4>
+            
+            
+            
+            <br>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+
+

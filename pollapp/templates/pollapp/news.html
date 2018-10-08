@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<center><b style="font-family: monospace;"></b><i><h2>Daily News</h2></i></center>
+		</div>
+	</div>
+</div>
+<br>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			{% for newss in new %}
+			<h3><a href="{% url 'pollapp:details' newss.id %}">{{ newss.title }}</a></h3>
+			<h5><p>{{ newss.text|linebreaksbr }}</p></h5>
+			<b>-----------------------------------------------------------------------------------------------</b>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
