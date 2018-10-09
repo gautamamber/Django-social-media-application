@@ -1,5 +1,5 @@
 from django import forms
-from .models import Comment
+from .models import Comment, Subscribe
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
@@ -41,3 +41,9 @@ class CommentForm(forms.ModelForm):
 	class Meta:
 		model = Comment
 		fields = {'content',}
+
+class Subscribe(forms.ModelForm):
+	# content = forms.CharField(label = "" , widget = forms.Textarea(attrs = {'class' :'form-control' , 'placeholder' : 'Text goes here!!!' , 'rows':'4' , 'cols' : '50'}))
+	class Meta:
+		model = Subscribe
+		fields = {'email',}

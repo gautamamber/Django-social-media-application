@@ -83,3 +83,9 @@ class Facts(models.Model):
 
 	def get_absolute_url(self):
 		return reverse("pollapp:details" , args = [self.id])
+
+class Subscribe(models.Model):
+	email = models.EmailField(blank = True)
+
+	def __str__(self):
+		return self.emails
