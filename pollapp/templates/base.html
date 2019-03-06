@@ -161,15 +161,21 @@ input[type=submit]:hover {
       <ul class="nav navbar-nav">
          
         <li><a href="/nirvachit/news/">Daily News</a></li>
-        <li><a href="/nirvachit/former_minister/">Former Ministers</a></li>
+        <!-- <li><a href="/nirvachit/former_minister/">Former Ministers</a></li> -->
+        <li><a href="/nirvachit/former_minister/">Chief Ministers</a></li>
           <li><a href="/nirvachit/election_updates/">Elections Updates</a></li>
           <li><a href="/nirvachit/about/">About us</a></li>
-        {% if user.is_authenticated %}
+
+
+{% if user.is_authenticated %}
         
-         <li><a href="/account/change_password">Reset Password</a></li>
+         
           <li><a href="/nirvachit/logout/">Logout</a></li>
+{% else %}
+          <li><a href="/nirvachit/login/">Login</a></li>
+
+        
       </ul>
-      {% else %}
       {% endif %}
     </div>
   </div>

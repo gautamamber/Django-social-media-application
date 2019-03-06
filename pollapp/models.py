@@ -27,12 +27,12 @@ class Post(models.Model):
 	def total_likes(self):
 		return self.likes.count()
 
-	
-       
-
-
 	def get_absolute_url(self):
 		return reverse("pollapp:details" , args = [self.id])
+
+	class Meta:
+		verbose_name = "Post"
+		verbose_name_plural = "Post"
 
 class Comment(models.Model):
 	post = models.ForeignKey(Post, on_delete = models.CASCADE, related_name = 'aa')
@@ -44,6 +44,9 @@ class Comment(models.Model):
 	def __str__(self):
 		return '{}-{}'.format(self.post.title, str(self.user.username))
 
+	class Meta:
+		verbose_name = "Comment"
+		verbose_name_plural = "Comment"
 
 class News(models.Model):
 	author = models.ForeignKey('auth.User', on_delete = models.CASCADE)
@@ -64,28 +67,8 @@ class News(models.Model):
 	def get_absolute_url(self):
 		return reverse("pollapp:details" , args = [self.id])
 
-
-class Facts(models.Model):
-	author = models.ForeignKey('auth.User', on_delete = models.CASCADE)
-	title = models.CharField(max_length= 100)
-	text = models.TextField()
-	# simage = models.ImageField(upload_to = 'New/%Y/%m/%d', blank = True)
-	created_date = models.DateTimeField(default = timezone.now)
-	published_date = models.DateTimeField(blank = True, null = True)
+	class Meta:
+		verbose_name = "News"
+		verbose_name_plural = "News"
 
 
-	def publish(self):
-		self.published_date = timezone.now()
-		self.save()
-
-	def __str__(self):
-		return self.title
-
-	def get_absolute_url(self):
-		return reverse("pollapp:details" , args = [self.id])
-
-class Subscribe(models.Model):
-	email = models.EmailField(blank = True)
-
-	def __str__(self):
-		return self.emails

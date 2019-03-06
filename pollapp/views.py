@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Post, Comment, News
-from .forms import RegistrationForm, CommentForm, Subscribe
+from .forms import RegistrationForm, CommentForm
 from django.urls import reverse
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
@@ -95,15 +95,3 @@ def register(request):
 	args = {'form' : form}
 	return render(request, 'pollapp/reg_forms.html', args)
 
-
-@login_required
-def subscribe(request):
-	if request.method == "POST":
-		form = Subscribe(request.POST)
-		if form.is_valid():
-			form.save()
-			return redirect('/nirvachit/post_list/')
-	else:
-		form = Subscribe
-	args = {'form' : form}
-	return render(request, 'pollapp/post_list.html' , args)
