@@ -1,0 +1,85 @@
+[
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$100000$36GD1m2Eb7ER$/gDuRNEQ4G2+Eka46uBkr2krusmIPijxn8CQzd74W7g=",
+    "last_login": "2019-03-05T09:44:05.046Z",
+    "is_superuser": true,
+    "username": "amber",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2019-03-05T05:29:22.742Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$100000$nW2SMOp5rexM$7hI0ae+2+JjSBWc6k26BGUf0I74nqx4YoGI0Km3P5t8=",
+    "last_login": "2019-03-05T09:43:27.024Z",
+    "is_superuser": false,
+    "username": "gautam",
+    "first_name": "amber",
+    "last_name": "gautam",
+    "email": "amber@nickelfox.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2019-03-05T09:43:22.450Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "pollapp.news",
+  "pk": 1,
+  "fields": {
+    "author": 1,
+    "title": "India says no plan to impose retaliatory tariffs on US goods",
+    "text": "ndia does not plan to impose retaliatory tariffs on US goods after US President Donald Trump said he intends to end India's preferential trade treatment, a top trade official said\r\nCommerce secretary Anup Wadhawan said the withdrawal of the Generalised System of Preferences (GSP) for Indian products would have limited impact",
+    "created_date": "2019-03-05T05:31:46Z",
+    "published_date": "2019-03-05T05:32:52Z"
+  }
+},
+{
+  "model": "pollapp.comment",
+  "pk": 1,
+  "fields": {
+    "post": 1,
+    "user": 1,
+    "content": "India will fight against this",
+    "timestamp": "2019-03-05T05:35:53.449Z"
+  }
+},
+{
+  "model": "pollapp.comment",
+  "pk": 2,
+  "fields": {
+    "post": 1,
+    "user": 2,
+    "content": "It was not good",
+    "timestamp": "2019-03-05T09:43:54.295Z"
+  }
+},
+{
+  "model": "pollapp.post",
+  "pk": 1,
+  "fields": {
+    "author": 1,
+    "title": "Pulwama",
+    "text": "Srinagar: \r\n\r\nAn encounter broke out in Jammu and Kashmir's Pulwama between security forces and terrorists this morning. Two terrorist were killed in ongoing operation.\r\n\r\nPolice had information about the presence of two terrorists hiding in a house in Pulwama's Tral.\r\n\r\nThe target house has been razed to ground.\r\n\r\nMobile internet services have been suspended in the town\r\n\r\nIt was in Pulwama that over 40 CRPF soldiers were killed in a terror attack on February 14. Pakistan-based terror group Jaish-e-Mohammed claimed responsibility for the attack. Following this, Indian fighter jets destroyed Jaish's biggest training camp in Pakistan's Balakot.",
+    "image": "New/2019/03/05/96bl3c5o_pulwama-encounter-twitter_625x300_05_March_19.jpg",
+    "created_date": "2019-03-05T05:33:30Z",
+    "published_date": "2019-03-05T05:34:38Z",
+    "likes": [
+      1,
+      2
+    ]
+  }
+}
+]
