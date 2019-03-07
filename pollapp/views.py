@@ -1,5 +1,4 @@
 from django.shortcuts import render
-
 # Create your views here.
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect
@@ -98,7 +97,24 @@ def poll_details(request, poll_id):
 	context ={
 	"poll_detail":poll_detail
 	}
-
+	# data = Poll.objects.get(id = poll_id)
+	# is_voted = False
+	# data.first_poll_count += 1
+	# data.save()
+	if request.method == "POST":
+		print("form is", form)
+		if request.POST.get("vote_first"):
+			data = Poll.objects.get(id = poll_id)
+			is_voted = False
+			data.first_poll_count += 1
+			data.save()
+			print("Helllo")
+		elif request.POST.get("vote_second"):
+			data = Poll.objects.get(id = poll_id)
+			is_voted = False
+			data.second_poll_count += 1
+			data.save()
+			print("hey")
 	return render(request, "pollapp/poll_details.html",context)
 
 
