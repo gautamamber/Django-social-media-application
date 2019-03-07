@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import Post, Comment, News
+from .models import Post, Comment, News, Poll
 from .forms import RegistrationForm, CommentForm
 from django.urls import reverse
 from django.utils import timezone
@@ -98,4 +98,8 @@ def register(request):
 
 @login_required
 def polls_between_two(request):
-	return render(request, "pollapp/polls.html")
+	polls = Poll.objects.all()
+	context = {
+	'polls' : polls
+	}
+	return render(request, "pollapp/polls.html",context)

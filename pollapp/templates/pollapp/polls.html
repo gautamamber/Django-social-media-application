@@ -1,8 +1,31 @@
 
 {% extends 'base.html' %}
 {% block body %}
-<center><h1>New  Poll</h1></center>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
 
+<div class="container">
+	<div class="row">
+		{% for poll in polls %}
+		<center>
+			<h2>Poll no: {{poll.id}}</h2>  <h2><b>{{poll.poll_between}}</b></h2><br><br>
+<div class="col-xs-6">
+	<img src="{% if poll.first_poll %} {{ poll.first_poll.url }} {% else %} {% static 'img/default.jpg' %} {% endif %}" alt="..." style="height: 200px; width: 200px;">
+	 
+	 
+</div>
 
+<div class="col-xs-6">
+<img src="{% if poll.second_poll %} {{ poll.second_poll.url }} {% else %} {% static 'img/default.jpg' %} {% endif %}" alt="..." style="height: 200px; width: 200px;">
+	
+</div>
 
+			
+			
+		</center>
+		
+
+		{% endfor %}
+	</div>
+</div>
 {% endblock %}
