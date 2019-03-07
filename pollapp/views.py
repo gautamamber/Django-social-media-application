@@ -36,9 +36,6 @@ def post_list(request):
 	}
 	return render(request, 'pollapp/post_list.html',  {'posts' : posts})
 
-
-
-
 @login_required
 def details(request, blog_id):
 	posts = get_object_or_404(Post, pk = blog_id)
@@ -53,13 +50,6 @@ def details(request, blog_id):
 			content = comment_form.cleaned_data.get('content')
 			comment = Comment(user = request.user, content = content, post  = posts )
 			comment.save()
-			# content = request.POST.get('content')
-			# reply_id = request.POST.get('comment_id')
-			# comment_qs = None
-			# if reply_id:
-			# 	comment_qs = Comment.objects.get(id = reply_id)
-			# comment = Comment.objects.get_or_create(post = posts ,reply = None, user = request.user , content = content)
-			# comment.save()
 			return HttpResponseRedirect(posts.get_absolute_url())
 	else:
 		comment_form = CommentForm()	
@@ -87,8 +77,6 @@ def register(request):
 		form = RegistrationForm(request.POST)
 		if form.is_valid():
 			form.save()
-
-
 			return redirect('/nirvachit/login/')
 	else:
 		form = RegistrationForm
@@ -110,5 +98,7 @@ def poll_details(request, poll_id):
 	context ={
 	"poll_detail":poll_detail
 	}
+
 	return render(request, "pollapp/poll_details.html",context)
+
 

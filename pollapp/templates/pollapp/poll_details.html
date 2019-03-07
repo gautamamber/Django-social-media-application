@@ -9,13 +9,33 @@
 			<h2>{{ poll_detail.poll_between }}</h2>
 			<br>
 			<div class="col-xs-6">
-	<img src="{{ poll_detail.first_poll.url }}" style="height: 130px; width: auto" alt="....." class="img-responsive"><br><button>Vote</button>
+	<img src="{{ poll_detail.first_poll.url }}" style="height: 130px; width: auto" alt="....." class="img-responsive"><br><br>Total votes: {{ poll_detail.first_poll_count }}<br><br><input type="button" id="approve" value="Vote" onclick="vote_one()"/>
 </div>
 <div class="col-xs-6">
-<img src="{{ poll_detail.second_poll.url }}" style="height: 130px; width: auto" alt="....." class="img-responsive"><br><button>Vote	</button>
+<img src="{{ poll_detail.second_poll.url }}" style="height: 130px; width: auto" alt="....." class="img-responsive"><br><br>Total votes: {{ poll_detail.second_poll_count }}<br><br><input type="button" id="reject" value="Vote" onclick="vote_two()"/>
 </div>
 		</center>
 		</div>
 	</div>
 </div>
+
+
+
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script>
+    function vote_one(){
+        alert("Poll is saved");
+        $('#reject').attr('disabled','disabled');
+    }
+    function vote_two(){
+        alert("Poll is saved");
+        $('#approve').attr('disabled','disabled');
+    }
+  </script>
+
+
+
+
+
 {% endblock %}

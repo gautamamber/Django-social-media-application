@@ -10,18 +10,12 @@
 		<center>
 			<h2>Poll no: {{poll.id}}</h2>  <h2><b><a href="{% url 'pollapp:poll_details' poll.id %}">{{poll.poll_between}}</a></b></h2><br><br>
 <div class="col-xs-6">
-
-
-	<img src="{% if poll.first_poll %} {{ poll.first_poll.url }} {% else %} {% static 'img/default.jpg' %} {% endif %}" alt="..." style="height: 200px; width: 200px;">
-	 
-	 
+	<img src="{% if poll.first_poll %} {{ poll.first_poll.url }} {% else %} {% static 'img/default.jpg' %} {% endif %}" alt="..." style="height: 200px; width: 200px;"> 
 </div>
-
 <div class="col-xs-6">
-<img src="{% if poll.second_poll %} {{ poll.second_poll.url }} {% else %} {% static 'img/default.jpg' %} {% endif %}" alt="..." style="height: 200px; width: 200px;">
-	
+<img src="{% if poll.second_poll %} {{ poll.second_poll.url }} {% else %} {% static 'img/default.jpg' %} {% endif %}" alt="..." style="height: 200px; width: 200px;"><br><br>	
 </div>
-
+<br><br>
 			====================================================================================================================================
 			
 		</center>
