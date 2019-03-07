@@ -95,3 +95,7 @@ def register(request):
 	args = {'form' : form}
 	return render(request, 'pollapp/reg_forms.html', args)
 
+
+@login_required
+def polls_between_two(request):
+	return render(request, "pollapp/polls.html")
