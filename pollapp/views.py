@@ -103,3 +103,12 @@ def polls_between_two(request):
 	'polls' : polls
 	}
 	return render(request, "pollapp/polls.html",context)
+
+@login_required
+def poll_details(request, poll_id):
+	poll_detail = get_object_or_404(Poll, pk = poll_id)
+	context ={
+	"poll_detail":poll_detail
+	}
+	return render(request, "pollapp/poll_details.html",context)
+

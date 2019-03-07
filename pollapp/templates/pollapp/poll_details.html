@@ -1,0 +1,21 @@
+
+{% extends 'base.html' %}
+{% block body %}
+
+<div class="coontainer-fluid">
+	<div class="row">
+		<div class="col-xs-12">
+		<center><h1>Poll no: {{poll_detail.id}}</h1>
+			<h2>{{ poll_detail.poll_between }}</h2>
+			<br>
+			<div class="col-xs-6">
+	<img src="{{ poll_detail.first_poll.url }}" style="height: 130px; width: auto" alt="....." class="img-responsive"><br><button>Vote</button>
+</div>
+<div class="col-xs-6">
+<img src="{{ poll_detail.second_poll.url }}" style="height: 130px; width: auto" alt="....." class="img-responsive"><br><button>Vote	</button>
+</div>
+		</center>
+		</div>
+	</div>
+</div>
+{% endblock %}

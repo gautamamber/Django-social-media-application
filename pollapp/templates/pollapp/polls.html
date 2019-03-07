@@ -8,8 +8,10 @@
 	<div class="row">
 		{% for poll in polls %}
 		<center>
-			<h2>Poll no: {{poll.id}}</h2>  <h2><b>{{poll.poll_between}}</b></h2><br><br>
+			<h2>Poll no: {{poll.id}}</h2>  <h2><b><a href="{% url 'pollapp:poll_details' poll.id %}">{{poll.poll_between}}</a></b></h2><br><br>
 <div class="col-xs-6">
+
+
 	<img src="{% if poll.first_poll %} {{ poll.first_poll.url }} {% else %} {% static 'img/default.jpg' %} {% endif %}" alt="..." style="height: 200px; width: 200px;">
 	 
 	 
@@ -20,12 +22,13 @@
 	
 </div>
 
-			
+			====================================================================================================================================
 			
 		</center>
 		
 
 		{% endfor %}
+
 	</div>
 </div>
 {% endblock %}
