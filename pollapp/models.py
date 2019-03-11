@@ -79,17 +79,12 @@ class Poll(models.Model):
 	second_poll = models.ImageField(upload_to = 'New/%Y/%m/%d', blank = True)
 	first_poll_count = models.IntegerField(default = 0)
 	second_poll_count = models.IntegerField(default = 0)
-	first_user_vote = models.ManyToManyField('auth.User', related_name = 'poll1',blank = True)
-	second_user_vote = models.ManyToManyField('auth.User', related_name = 'poll2',blank = True)
-
 	class Meta:
 		verbose_name_plural = "Poll"
 		verbose_name = "Poll"
 
 	def  __str__(self):
 		return str(self.poll_between)
-
-
 
 class NewsLetter(models.Model):
 	email = models.EmailField()

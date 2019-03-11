@@ -2,8 +2,45 @@
 {% extends 'base.html' %}
 {% block body %}
 
-
-<center><h2><b style="font-size: 20px; font-family: monospace;">Registration</b></h2></center>
+<style>
+	input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=email] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=submit] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+</style>
+<center><b style="font-size: 40px; font-family: monospace;">Registration</b></center>
 
 <div class="container">
 	<div class="row">
@@ -11,7 +48,7 @@
 			<form method="POST">
 	{% csrf_token %}
 	{{ form.as_p }}
-<button class = "buttonmy" type="submit">Signup</button>
+<input type="submit">
 </form>
 
 		</div>
