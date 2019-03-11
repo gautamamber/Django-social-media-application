@@ -13,8 +13,9 @@
 
 	<form method="POST" >{% csrf_token %}
         
-       <input type="button" id="approve" name = "vote_first" value="Vote" onclick="vote_one()"/>
+      
 
+       <button type="submit" id="approve" name = "vote_first" value="Vote" onclick="vote_one()">Vote</button>
 
     </form>
 
@@ -26,8 +27,7 @@
 
 <form method="POST" >{% csrf_token %}
         
-       <input type="button" id="reject" name = "vote_second" value="Vote" onclick="vote_two()"/>
-
+       <button type="submit" id="reject" name = "vote_second" value="Vote" onclick="vote_two()">Vote</button>
 
     </form>
 
@@ -36,8 +36,6 @@
 		</div>
 	</div>
 </div>
-
-
 
 <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"></script>

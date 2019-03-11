@@ -2,8 +2,8 @@ from django.shortcuts import render
 # Create your views here.
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import Post, Comment, News, Poll
-from .forms import RegistrationForm, CommentForm
+from .models import Post, Comment, News, Poll, NewsLetter
+from .forms import RegistrationForm, CommentForm, NewsForm
 from django.urls import reverse
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
@@ -33,7 +33,17 @@ def post_list(request):
 	context = {
 	'posts' : posts
 	}
-	return render(request, 'pollapp/post_list.html',  {'posts' : posts})
+	if request.method == 'POST':
+		form = NewsForm(request.POST or None)
+		if form.is_valid():
+			email = form.cleaned_data.get('email')
+			email_save = NewsLetter(email = email)
+			email_save.save()
+			return redirect('/nirvachit')
+	else:
+		form = NewsForm()
+	return render(request, 'pollapp/post_list.html',  {'posts' : posts, 'form':form})
+
 
 @login_required
 def details(request, blog_id):
@@ -52,8 +62,7 @@ def details(request, blog_id):
 			return HttpResponseRedirect(posts.get_absolute_url())
 	else:
 		comment_form = CommentForm()	
-
-	context = {'posts' : posts, 'is_liked' : is_liked, 'total_likes' : posts.total_likes, 'comments' : comments, 'comment_form' : comment_form}
+		context = {'posts' : posts, 'is_liked' : is_liked, 'total_likes' : posts.total_likes, 'comments' : comments, 'comment_form' : comment_form}
 	return render(request, 'pollapp/details.html' , context )
 
 
@@ -97,24 +106,17 @@ def poll_details(request, poll_id):
 	context ={
 	"poll_detail":poll_detail
 	}
-	# data = Poll.objects.get(id = poll_id)
-	# is_voted = False
-	# data.first_poll_count += 1
-	# data.save()
-	if request.method == "POST":
-		print("form is", form)
-		if request.POST.get("vote_first"):
-			data = Poll.objects.get(id = poll_id)
-			is_voted = False
-			data.first_poll_count += 1
-			data.save()
-			print("Helllo")
-		elif request.POST.get("vote_second"):
-			data = Poll.objects.get(id = poll_id)
-			is_voted = False
-			data.second_poll_count += 1
-			data.save()
-			print("hey")
+	submitvote_first = request.POST.get('vote_first')
+	submitvote_second = request.POST.get('vote_second')
+
+	if submitvote_first:
+		data = Poll.objects.get(id = poll_id)
+		data.first_poll_count += 1
+		data.save()
+	elif submitvote_second:
+		data = Poll.objects.get(id = poll_id)
+		data.second_poll_count += 1
+		data.save()
 	return render(request, "pollapp/poll_details.html",context)
 
 

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Comment
+from .models import Comment, NewsLetter
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
@@ -42,5 +42,10 @@ class CommentForm(forms.ModelForm):
 		model = Comment
 		fields = {'content',}
 
+class NewsForm(forms.ModelForm):
+	email = forms.EmailField(required = True)
+	class Meta:
+		model = NewsLetter
+		fields = '__all__'
 
 
