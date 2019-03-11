@@ -127,9 +127,12 @@ def send_newsletter(request):
 			form = NewsLetterForm(request.POST)
 			if form.is_valid():
 				post = form.save(commit=False)
-				print("post is", post.title)
-				print("Post text is", post.text)
-				print("post link is", post.link)
+				all_subscriber = Subscriber.objects.all()	
+				email = []
+				for i in all_subscriber:
+					email.append(i.email)
+				complete_mail = post.title + "\n" + post.text + "\n" + post.links
+				send_mail(post.title, complete_mail, 'gautamamber5@gmail.com', email)
 				post.save()
 				return redirect('/nirvachit/')
 		else:
@@ -137,11 +140,6 @@ def send_newsletter(request):
 		return render(request, "pollapp/news_letter.html", {"form":form})
 	else:
 		return render(request, "pollapp/no_news_letter.html")
-
-
-def send_email_to_subscribed_news_letter():
-	send_mail('Subject here', 'Here is the message.','gautamamber5@gmail.com',['amber@nickelfox.com'], fail_silently=False,)
-
 
 
 

@@ -37,13 +37,13 @@ class RegistrationForm(UserCreationForm):
 
 
 class CommentForm(forms.ModelForm):
-	content = forms.CharField(label = "" , widget = forms.Textarea(attrs = {'class' :'form-control' , 'placeholder' : 'Text goes here!!!' , 'rows':'4' , 'cols' : '50'}))
+	content = forms.CharField(label = "Comments" , widget = forms.Textarea(attrs = {'class' :'form-control' , 'placeholder' : 'Text goes here!!!' , 'rows':'4' , 'cols' : '50'}))
 	class Meta:
 		model = Comment
 		fields = {'content',}
 
 class NewsForm(forms.ModelForm):
-	email = forms.EmailField(required = True)
+	email = forms.EmailField(required = True, label = "User email")
 	class Meta:
 		model = Subscriber
 		fields = '__all__'

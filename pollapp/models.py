@@ -98,7 +98,7 @@ class Subscriber(models.Model):
 
 
 class SendNewsLetter(models.Model):
-	title = models.CharField(max_length = 200, blank = True)
+	title = models.CharField(max_length = 200, blank = True, verbose_name = "News Title")
 	text = models.TextField()
 	links = models.URLField()
 
