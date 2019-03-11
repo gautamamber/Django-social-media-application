@@ -121,6 +121,7 @@ def poll_details(request, poll_id):
 	return render(request, "pollapp/poll_details.html",context)
 
 
+@login_required
 def send_newsletter(request):
 	if request.user.is_staff:
 		if request.method == "POST":
