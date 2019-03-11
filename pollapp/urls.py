@@ -18,6 +18,7 @@ urlpatterns = [
 	path('election_updates/', views.election_updates, name = 'election_updates'),
 	path('poll/',views.polls_between_two, name= "polls_between_two"),
 	path('poll/<int:poll_id>/', views.poll_details, name = "poll_details"),
+	path('news_letter/', views.send_newsletter, name = "news_letter"),
 
 	# url(r'^activate/(?P<uidb64>[0-9A-Za-z_\\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',views.activate, name='activate'),
     

@@ -86,13 +86,27 @@ class Poll(models.Model):
 	def  __str__(self):
 		return str(self.poll_between)
 
-class NewsLetter(models.Model):
+class Subscriber(models.Model):
 	email = models.EmailField()
 
 	def __str__(self):
 		return str(self.email)
 
 	class Meta:
-		verbose_name = 'News Letter'
-		verbose_name_plural = 'News Letter'
+		verbose_name = 'Subscriber'
+		verbose_name_plural = 'Subscriber'
+
+
+class SendNewsLetter(models.Model):
+	title = models.CharField(max_length = 200, blank = True)
+	text = models.TextField()
+	links = models.URLField()
+
+	def __str__(self):
+		return str(self.title)
+
+	class Meta:
+		verbose_name_plural = "News Letter"
+		verbose_name = "News Letter"
+
 

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Comment, NewsLetter
+from .models import Comment, Subscriber, SendNewsLetter
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
@@ -45,7 +45,13 @@ class CommentForm(forms.ModelForm):
 class NewsForm(forms.ModelForm):
 	email = forms.EmailField(required = True)
 	class Meta:
-		model = NewsLetter
+		model = Subscriber
+		fields = '__all__'
+
+
+class NewsLetterForm(forms.ModelForm):
+	class Meta:
+		model = SendNewsLetter
 		fields = '__all__'
 
 

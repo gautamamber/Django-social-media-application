@@ -2,12 +2,13 @@ from django.shortcuts import render
 # Create your views here.
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import Post, Comment, News, Poll, NewsLetter
-from .forms import RegistrationForm, CommentForm, NewsForm
+from .models import Post, Comment, News, Poll, Subscriber
+from .forms import RegistrationForm, CommentForm, NewsForm, NewsLetterForm
 from django.urls import reverse
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
+from django.core.mail import send_mail
 # Create your views here.
 
 def about(request):
@@ -37,7 +38,7 @@ def post_list(request):
 		form = NewsForm(request.POST or None)
 		if form.is_valid():
 			email = form.cleaned_data.get('email')
-			email_save = NewsLetter(email = email)
+			email_save = Subscriber(email = email)
 			email_save.save()
 			return redirect('/nirvachit')
 	else:
@@ -118,5 +119,31 @@ def poll_details(request, poll_id):
 		data.second_poll_count += 1
 		data.save()
 	return render(request, "pollapp/poll_details.html",context)
+
+
+def send_newsletter(request):
+	if request.user.is_staff:
+		if request.method == "POST":
+			form = NewsLetterForm(request.POST)
+			if form.is_valid():
+				post = form.save(commit=False)
+				print("post is", post.title)
+				print("Post text is", post.text)
+				print("post link is", post.link)
+				post.save()
+				return redirect('/nirvachit/')
+		else:
+			form = NewsLetterForm()
+		return render(request, "pollapp/news_letter.html", {"form":form})
+	else:
+		return render(request, "pollapp/no_news_letter.html")
+
+
+def send_email_to_subscribed_news_letter():
+	send_mail('Subject here', 'Here is the message.','gautamamber5@gmail.com',['amber@nickelfox.com'], fail_silently=False,)
+
+
+
+
 
 
