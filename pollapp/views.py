@@ -126,7 +126,8 @@ def send_newsletter(request):
 	if request.user.is_staff:
 		if request.method == "POST":
 			form = NewsLetterForm(request.POST)
-			if form.is_valid():
+			try:
+				if form.is_valid():
 				post = form.save(commit=False)
 				all_subscriber = Subscriber.objects.all()	
 				email = []
@@ -136,6 +137,8 @@ def send_newsletter(request):
 				send_mail(post.title, complete_mail, 'gautamamber5@gmail.com', email)
 				post.save()
 				return redirect('/nirvachit/')
+			except:
+				print("Sorry something went wrong")
 		else:
 			form = NewsLetterForm()
 		return render(request, "pollapp/news_letter.html", {"form":form})
