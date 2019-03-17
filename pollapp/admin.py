@@ -17,8 +17,11 @@ class SendNewsLetterAdmin(admin.ModelAdmin):
 	def save_model(self, request, obj, form, change):
 		all_subscriber = Subscriber.objects.all()	
 		email = []
-		for i in all_subscriber:
-			email.append(i.email)
-		complete_mail = obj.title + "\n" + obj.text + "\n" + obj.links
-		send_mail(obj.title, complete_mail, 'gautamamber5@gmail.com', email)
-		super().save_model(request, obj, form, change)
+		try:
+			for i in all_subscriber:
+				email.append(i.email)
+			complete_mail = obj.title + "\n" + obj.text + "\n" + obj.links
+			send_mail(obj.title, complete_mail, 'gautamamber5@gmail.com', email)
+			super().save_model(request, obj, form, change)
+		except:
+			print("Sorry somethinh wrong")
