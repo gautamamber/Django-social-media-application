@@ -7,11 +7,11 @@
 <br>
 <br>
 
-<ul>
+
 	{% for i in list_state %}
-	<li><h1><b><a href="{% url 'pollapp:election_update_details' i.id %}">{{ i.state }}</a></b></h1></li>
+	<h1 style="margin-left: 40px;"><b><a href="{% url 'pollapp:election_update_details' i.id %}">{{ i.state }}</a></b></h1><br>
 	{% endfor %}
-</ul>
+
 
 
 {% endblock %}
