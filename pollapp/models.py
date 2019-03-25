@@ -72,20 +72,6 @@ class News(models.Model):
 		verbose_name_plural = "News"
 
 
-
-class Poll(models.Model):
-	poll_between = models.CharField(max_length = 100, blank = True, null = True)
-	first_poll = models.ImageField(upload_to = 'New/%Y/%m/%d', blank = True)
-	second_poll = models.ImageField(upload_to = 'New/%Y/%m/%d', blank = True)
-	first_poll_count = models.IntegerField(default = 0)
-	second_poll_count = models.IntegerField(default = 0)
-	class Meta:
-		verbose_name_plural = "Poll"
-		verbose_name = "Poll"
-
-	def  __str__(self):
-		return str(self.poll_between)
-
 class Subscriber(models.Model):
 	email = models.EmailField()
 

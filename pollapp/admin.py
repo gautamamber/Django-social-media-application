@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Comment, News, Poll, Subscriber, SendNewsLetter
+from .models import Post, Comment, News, Subscriber, SendNewsLetter
 from django.core.mail import send_mail
 
 # Register your models here.
@@ -8,9 +8,6 @@ admin.site.register(Comment)
 admin.site.register(News)
 admin.site.register(Subscriber)
 
-@admin.register(Poll)
-class PollAdmin(admin.ModelAdmin):
-	readonly_fields = ['first_poll_count', 'second_poll_count']
 
 @admin.register(SendNewsLetter)
 class SendNewsLetterAdmin(admin.ModelAdmin):

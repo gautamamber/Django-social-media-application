@@ -2,7 +2,7 @@ from django.shortcuts import render
 # Create your views here.
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import Post, Comment, News, Poll, Subscriber
+from .models import Post, Comment, News, Subscriber
 from .forms import RegistrationForm, CommentForm, NewsForm, NewsLetterForm
 from django.urls import reverse
 from django.utils import timezone
@@ -18,7 +18,7 @@ def election_updates(request):
 	return render(request, 'pollapp/election_updates.html')
 
 def former_minister(request):
-	return render(request, 'pollapp/former_minister.html')
+	return render(request, 'pollapp/chief_minister.html')
 
 def news(request):
 	new = News.objects.all()
@@ -94,49 +94,21 @@ def register(request):
 
 
 @login_required
-def polls_between_two(request):
-	polls = Poll.objects.all()
-	context = {
-	'polls' : polls
-	}
-	return render(request, "pollapp/polls.html",context)
-
-@login_required
-def poll_details(request, poll_id):
-	poll_detail = get_object_or_404(Poll, pk = poll_id)
-	context ={
-	"poll_detail":poll_detail
-	}
-	submitvote_first = request.POST.get('vote_first')
-	submitvote_second = request.POST.get('vote_second')
-
-	if submitvote_first:
-		data = Poll.objects.get(id = poll_id)
-		data.first_poll_count += 1
-		data.save()
-	elif submitvote_second:
-		data = Poll.objects.get(id = poll_id)
-		data.second_poll_count += 1
-		data.save()
-	return render(request, "pollapp/poll_details.html",context)
-
-
-@login_required
 def send_newsletter(request):
 	if request.user.is_staff:
 		if request.method == "POST":
 			form = NewsLetterForm(request.POST)
 			try:
 				if form.is_valid():
-				post = form.save(commit=False)
-				all_subscriber = Subscriber.objects.all()	
-				email = []
-				for i in all_subscriber:
-					email.append(i.email)
-				complete_mail = post.title + "\n" + post.text + "\n" + post.links
-				send_mail(post.title, complete_mail, 'gautamamber5@gmail.com', email)
-				post.save()
-				return redirect('/nirvachit/')
+					post = form.save(commit=False)
+					all_subscriber = Subscriber.objects.all()	
+					email = []
+					for i in all_subscriber:
+						email.append(i.email)
+					complete_mail = post.title + "\n" + post.text + "\n" + post.links
+					send_mail(post.title, complete_mail, 'gautamamber5@gmail.com', email)
+					post.save()
+					return redirect('/nirvachit/')
 			except:
 				print("Sorry something went wrong")
 		else:
