@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+
+<div class="container">
+    <div class="row">
+        <div>
+            <h3>
+                <b>
+                    State: {{ data.state }}
+                </b>
+            </h3>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div>
+            <h3>
+                <b>
+                    Total Seats: {{ data.total_no_of_seats }}
+                </b>
+            </h3>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div>
+            <h3>
+                <b>
+                    Parties : {% for parties in data.party.all %} {{ parties }} {% endfor %}
+                </b>
+            </h3>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

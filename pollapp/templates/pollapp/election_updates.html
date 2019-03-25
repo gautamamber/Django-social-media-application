@@ -2,6 +2,16 @@
 {% extends 'base.html' %}
 {% block body %}
 
-<center><h2>Election Updates</h2></center>
+<center><h2><b>Election 2019</b></h2></center>
+
+<br>
+<br>
+
+<ul>
+	{% for i in list_state %}
+	<li><h1><b><a href="{% url 'pollapp:election_update_details' i.id %}">{{ i.state }}</a></b></h1></li>
+	{% endfor %}
+</ul>
+
 
 {% endblock %}

@@ -12,9 +12,9 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12">
-			{% for newss in new %}
-			<h3>{{ newss.title }}</h3>
-			<h5><p>{{ newss.text|linebreaksbr }}</p></h5>
+			{% for news_list in new %}
+			<h3>{{ news_list.title }}</h3>
+			<h5><p>{{ news_list.text|linebreaksbr }}</p></h5>
 			<b>-----------------------------------------------------------------------------------------------</b>
 			{% endfor %}
 		</div>

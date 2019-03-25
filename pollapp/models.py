@@ -118,13 +118,15 @@ class Party(models.Model):
 
 class ElectionUpdate(models.Model):
 	state = models.ForeignKey(State, on_delete = models.CASCADE)
+	party = models.ManyToManyField(Party, blank = True)
+	total_no_of_seats = models.IntegerField(blank = True, default = 0)
 
 	def __str__(self):
 		return str(self.state)
 
 	class Meta:
-		verbose_name = "State"
-		verbose_name_plural = "State"	
+		verbose_name = "Election Update"
+		verbose_name_plural = "Election Update"	
 
 
 

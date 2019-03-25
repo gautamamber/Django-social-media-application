@@ -2,7 +2,7 @@ from django.shortcuts import render
 # Create your views here.
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import Post, Comment, News, Subscriber
+from .models import Post, Comment, News, Subscriber, State, Party, ElectionUpdate
 from .forms import RegistrationForm, CommentForm, NewsForm, NewsLetterForm
 from django.urls import reverse
 from django.utils import timezone
@@ -15,7 +15,12 @@ def about(request):
 	return render(request, 'pollapp/about.html')
 
 def election_updates(request):
-	return render(request, 'pollapp/election_updates.html')
+	list_state = ElectionUpdate.objects.all()
+	return render(request, 'pollapp/election_updates.html', {'list_state' : list_state})
+
+def election_update_details(request, pk):
+	data = get_object_or_404(ElectionUpdate, pk = pk)
+	return render(request, "pollapp/election_update_details.html", {'data':data})
 
 def former_minister(request):
 	return render(request, 'pollapp/chief_minister.html')
@@ -116,6 +121,13 @@ def send_newsletter(request):
 		return render(request, "pollapp/news_letter.html", {"form":form})
 	else:
 		return render(request, "pollapp/no_news_letter.html")
+
+
+
+
+
+	
+
 
 
 

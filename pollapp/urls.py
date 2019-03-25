@@ -17,6 +17,7 @@ urlpatterns = [
 	path('former_minister/', views.former_minister, name = 'former_minister'),
 	path('election_updates/', views.election_updates, name = 'election_updates'),
 	path('news_letter/', views.send_newsletter, name = "news_letter"),
+	path('election_update_details/<int:pk>', views.election_update_details, name = "election_update_details"),
 
 	# url(r'^activate/(?P<uidb64>[0-9A-Za-z_\\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',views.activate, name='activate'),
     
