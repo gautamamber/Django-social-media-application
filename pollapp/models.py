@@ -119,7 +119,8 @@ class Party(models.Model):
 class ElectionUpdate(models.Model):
 	state = models.ForeignKey(State, on_delete = models.CASCADE)
 	party = models.ManyToManyField(Party, blank = True)
-	total_no_of_seats = models.IntegerField(blank = True, default = 0)
+	total_no_of_seats = models.IntegerField(blank = True)
+	result = models.TextField(null = True)
 
 	def __str__(self):
 		return str(self.state)
