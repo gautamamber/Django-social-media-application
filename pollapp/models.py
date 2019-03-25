@@ -95,4 +95,36 @@ class SendNewsLetter(models.Model):
 		verbose_name_plural = "News Letter"
 		verbose_name = "News Letter"
 
+class State(models.Model):
+	state = models.CharField(max_length = 100)
+
+	def __str__(self):
+		return str(self.state)
+
+	class Meta:
+		verbose_name = "State"
+		verbose_name_plural = "State"
+
+class Party(models.Model):
+	party = models.CharField(max_length = 100)
+
+	def __str__(self):
+		return str(self.party)
+
+	class Meta:
+		verbose_name = "Party"
+		verbose_name_plural = "Party"
+
+
+class ElectionUpdate(models.Model):
+	state = models.ForeignKey(State, on_delete = models.CASCADE)
+
+	def __str__(self):
+		return str(self.state)
+
+	class Meta:
+		verbose_name = "State"
+		verbose_name_plural = "State"	
+
+
 
