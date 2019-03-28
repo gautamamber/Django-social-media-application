@@ -11,20 +11,28 @@ from django.contrib.auth import authenticate, login
 from django.core.mail import send_mail
 # Create your views here.
 
+
+# About nirvachuit 
 def about(request):
 	return render(request, 'pollapp/about.html')
 
+
+# Election updates, all states list is shown
 def election_updates(request):
 	list_state = ElectionUpdate.objects.all()
 	return render(request, 'pollapp/election_updates.html', {'list_state' : list_state})
 
+
+# Paerticular state updates
 def election_update_details(request, pk):
 	data = get_object_or_404(ElectionUpdate, pk = pk)
 	return render(request, "pollapp/election_update_details.html", {'data':data})
 
-def former_minister(request):
+# List of chief ministers
+def chief_minister(request):
 	return render(request, 'pollapp/chief_minister.html')
 
+# News
 def news(request):
 	new = News.objects.all()
 	context = {
@@ -33,6 +41,8 @@ def news(request):
 	return render(request, 'pollapp/news.html',  context)
 
 
+
+# News feed
 @login_required
 def post_list(request):
 	posts = Post.objects.filter(published_date__lte = timezone.now()).order_by('published_date')
@@ -51,6 +61,7 @@ def post_list(request):
 	return render(request, 'pollapp/post_list.html',  {'posts' : posts, 'form':form})
 
 
+# Particular news feed 
 @login_required
 def details(request, blog_id):
 	posts = get_object_or_404(Post, pk = blog_id)
@@ -73,6 +84,7 @@ def details(request, blog_id):
 
 
 
+# Like post
 @login_required
 def like_post(request):
 	posts = get_object_or_404(Post, id = request.POST.get('post_id'))
@@ -98,6 +110,7 @@ def register(request):
 	return render(request, 'pollapp/reg_forms.html', args)
 
 
+# News letter
 @login_required
 def send_newsletter(request):
 	if request.user.is_staff:

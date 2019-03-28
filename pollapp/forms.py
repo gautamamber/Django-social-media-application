@@ -3,9 +3,10 @@ from .models import Comment, Subscriber, SendNewsLetter
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+
+
 class RegistrationForm(UserCreationForm):
 	email = forms.EmailField(required = True)
-	
 	# exmaple photo class : resolution pixel or info about model
 	def __init__(self, *args, **kwargs):
 		super(RegistrationForm, self).__init__(*args, **kwargs)
@@ -22,7 +23,6 @@ class RegistrationForm(UserCreationForm):
 
 	class Meta:
 		model = User
-
 		fields = ('username', 'first_name' , 'last_name','email', 'password1', 'password2')
 
 	def save(self,commit = True):
