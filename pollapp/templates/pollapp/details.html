@@ -1,14 +1,30 @@
 
 {% extends 'base.html' %}
 {% block body %}
-<div class="coontainer-fluid">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<style>
+input[type=submit] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+} 
+</style>
+<div class="container">
 	<div class="row">
 		<div class="col-xs-12">
-			<h2>{{ posts.title }}</h2>
-	<img src="{{ posts.image.url }}" style="height: 130px; width: auto" alt="....." class="img-responsive"><br>
+			<h1><b>{{ posts.title }}</b></h1>
+			<p>Published: {{ posts.published_date }}</p>
+			<br>
+	<img src="{{ posts.image.url }}" alt="Post nirvachit" class="img-responsive"><br>
 	<br>
-	{{ posts.text }}<br>
-	{{ total_likes }} Like{{ total_likes | pluralize }}
+	{{ posts.text }}
+	<p>
+		<br><b>{{ total_likes }} Like{{ total_likes | pluralize }}</b>
+	</p>
 	<hr>
 
 	<form action="{% url 'pollapp:like_post' %}" method="post">
@@ -20,8 +36,6 @@
 	{% endif %}
 </form>
 
-
-</center>
 		</div>
 	</div>
 </div>
@@ -30,11 +44,7 @@
 
 
 
-
-
-
-
-
+<div class="container">
 
 <div class="main-comment-section">
 <form method="POST">
@@ -84,6 +94,7 @@
 
 
 	{% endfor %}
+</div>
 </div>
 
 {% endblock %}
