@@ -1,12 +1,17 @@
 from . import views
 from django.conf.urls import url, include
-from django.contrib.auth.views import (login, logout, password_reset, password_reset_done, password_reset_confirm,
-password_reset_complete)
+from django.contrib.auth.views import (login, logout)
+
+from django.contrib.auth import views as auth_views
 from django.urls import path
 app_name = 'pollapp'
 urlpatterns = [
 	url(r'^login/$',login,{'template_name' : 'pollapp/login.html'}),
 	url(r'^logout/$',logout, {'template_name' : 'pollapp/logout.html'}),
+	url(r'^password/$', auth_views.PasswordChangeView.as_view(template_name='pollapp/password_change.html'),
+        name='password_change'),
+	url(r'^password/done/$', auth_views.PasswordChangeDoneView.as_view(template_name='pollapp/password_change_done.html'),
+        name='password_change_done'),
 	path('', views.post_list ,name = 'post_list'),
 	path('<int:blog_id>/', views.details, name = "details"),
 	# 

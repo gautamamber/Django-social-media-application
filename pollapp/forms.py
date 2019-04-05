@@ -55,3 +55,5 @@ class NewsLetterForm(forms.ModelForm):
 		fields = '__all__'
 
 
+
+
