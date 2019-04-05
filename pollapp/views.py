@@ -2,7 +2,7 @@ from django.shortcuts import render
 # Create your views here.
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import Post, Comment, News, Subscriber, State, Party, ElectionUpdate
+from .models import Post, Comment, News, Subscriber, State, Party, ElectionUpdate, Ministry
 from .forms import RegistrationForm, CommentForm, NewsForm, NewsLetterForm
 from django.urls import reverse
 from django.utils import timezone
@@ -30,7 +30,8 @@ def election_update_details(request, pk):
 
 # List of chief ministers
 def chief_minister(request):
-	return render(request, 'pollapp/chief_minister.html')
+	minister = Ministry.objects.all()
+	return render(request, 'pollapp/chief_minister.html', {'minister' : minister})
 
 # News
 def news(request):

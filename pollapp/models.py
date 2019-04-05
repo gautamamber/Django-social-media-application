@@ -132,7 +132,7 @@ class ElectionUpdate(models.Model):
 
 class Ministry(models.Model):
 	party = models.CharField(max_length = 100, blank = True)
-	minisrty = models.CharField(max_length = 100, blank = True)
+	ministry = models.CharField(max_length = 100, blank = True)
 	name = models.CharField(max_length = 100, blank = True)
 	state = models.CharField(max_length = 100, blank = True)
 
