@@ -4,7 +4,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12">
-			<center><h2><b style="font-family: monospace;">Daily News</b></h2></center>
+			<center><h1><b style="font-family: monospace;">Daily News</b></h1></center>
 		</div>
 	</div>
 </div>
@@ -12,17 +12,19 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12">
-			{% for news_list in new %}
-			<h3>{{ news_list.title }}</h3>
-			<h5><p>{{ news_list.text|linebreaksbr }}</p></h5>
-			<b>-----------------------------------------------------------------------------------------------</b>
-			{% endfor %}
+				<div class="jumbotron jumbotron-fluid">
+				<br>
+					{% for news_list in new %}
+				<h2><b>{{ news_list.title }}</b></h2>
+				<h3>{{ news_list.text|linebreaksbr }}<h3>
+				<hr>
+				{% endfor %}
+				</div>
 		</div>
 	</div>
 </div>
 
 {% endblock %}
-
 
 
 
