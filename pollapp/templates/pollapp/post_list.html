@@ -1,26 +1,42 @@
 {% extends 'base.html' %}
 {% block body %}
 {% load static %}
-
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+input[type=submit] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+} 
 </style>
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 <div class="container">
     <div class="row">
         <div class="col-sm-7 col-xs-12">
             {% for post in posts %}
-            <h2><b><a href="{% url 'pollapp:details' post.id %}">{{ post.title }}</a></b></h2>
+            <h1><b><a href="{% url 'pollapp:details' post.id %}">{{ post.title }}</a></b></h1>
             <p>Published: {{ post.published_date }}</p>
-            <h4><p>{{ post.text|linebreaksbr }}</p></h4>
-            <img src="{% if post.image %} {{ post.image.url }} {% else %} {% static 'img/default.jpg' %} {% endif %}" alt="..." style="height: 300px; width: 300px;" class = "img-responsive ">
-            
+            <hr>
+            <img src="{% if post.image %} {{ post.image.url }} {% else %} {% static 'img/default.jpg' %} {% endif %}" alt="..."  class = "img-responsive ">
+            <h4><p class="w3-justify jumbotron jumbotron-fluid">
+            <br>
+            <br>
+            {{ post.text|linebreaksbr }}
+            <br>
+            <br>
+            </p></h4>
             
             <br>
             {% endfor %}
         </div>
         <div class="col-sm-5 col-xs-12" style="margin-top: 100px;">
-        <center><h1>Subscribe for daily newsletter</h1></center>
-            <form method="POST">
-    {% csrf_token %}
+        <h3>Subscribe for daily newsletter</h3>            
+        <form method="POST">
+        {% csrf_token %}
     <br>
     <input type="email" name="email" style="height: 40px;" placeholder="Subscribe our news letter"><br>
 
