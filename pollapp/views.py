@@ -31,7 +31,7 @@ def election_update_details(request, pk):
 # List of chief ministers
 def chief_minister(request):
 	minister = Ministry.objects.all()
-	return render(request, 'pollapp/chief_minister.html', {'minister' : minister})
+	return render(request, 'pollapp/minister.html', {'minister' : minister})
 
 # News
 def news(request):
