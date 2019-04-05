@@ -8,10 +8,6 @@ app_name = 'pollapp'
 urlpatterns = [
 	url(r'^login/$',login,{'template_name' : 'pollapp/login.html'}),
 	url(r'^logout/$',logout, {'template_name' : 'pollapp/logout.html'}),
-	url(r'^password/$', auth_views.PasswordChangeView.as_view(template_name='pollapp/password_change.html'),
-        name='password_change'),
-	url(r'^password/done/$', auth_views.PasswordChangeDoneView.as_view(template_name='pollapp/password_change_done.html'),
-        name='password_change_done'),
 	path('', views.post_list ,name = 'post_list'),
 	path('<int:blog_id>/', views.details, name = "details"),
 	# 

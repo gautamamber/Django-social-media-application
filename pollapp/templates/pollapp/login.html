@@ -2,7 +2,7 @@
 {% extends 'base.html' %}
 {% block body %}
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
+<br><br>
 <div class="container-fluid">
   <div class="row">
     <div class="col-xs-12">
@@ -14,65 +14,66 @@
 <h1 style="color: green;">एक जागरूक समाज के ओर अग्रसर कदम!!
           </i></h1>
         </b>
-       <!--  <b>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </b><br><br> -->
       </center>
     </div>
   </div>
 </div>
 
+<br>
+<br>
+<br>
 
 <div class="container">
   <div class="row">
-    <div class="col-xs-12">
-      {% for newss in newa %}
-      <h3><a href="{% url 'pollapp:details' newss.id %}">{{ newss.title }}</a></h3>
-      {% endfor %}
-    </div>
-  </div>
-</div>
-
-<div class="container-fluid	">
-	<div class="row">
-		<div class="col-sm-5 col-xs-12">
-			<div class="jumbotron jumbotron-fluid">
+    <div class="col-sm-5 col-xs-12">
+      <div class="jumbotron jumbotron-fluid">
   
    <div class="container">
 <h3>Login</h3>
 <form method="POST">
 {% csrf_token %}
 {{ form.as_p }}
-
 <button class = "buttonmy" type="submit">Login</button>
-<h3><a href="/nirvachit/register/">Register</h3></span></a>
+<h3><a href="/nirvachit/register/">Register</a></h3>
 <br>
 </form>
 </div>
  </div>
 </div>
+
 <div class="col-sm-7 col-xs-12">
- {% load static %}
-   
-<div class="w3-content w3-section" >
-  <img class="mySlides" src="{% static "pollapp/images.jpeg" %}" style="width:100%" height="300px">
-  <img class="mySlides" src="{% static "pollapp/image.jpeg" %}" style="width:100%" height="300px">
-  <img class="mySlides" src="{% static "pollapp/index.jpeg" %}" style="width:100%" height="300px">
-</div>
-    
+<h3>
+  <ul>
+  <li>
+    Bad officials are elected by good citizens who don’t vote.
+  </li>
+  <li>
+    The ballot is stronger than the bullet.
+  </li>
+  <li>
+    One of the penalties for refusing to participate in politics is that you end up being governed by your inferiors.
+  </li>
+  <li>
+    The ignorance of one voter in a democracy impairs the security of all.
+  </li>
+  <li>
+    Always vote for principle, though you may vote alone, and you may cherish the sweetest reflection that your vote is never lost.
+  </li>
+  <li>
+    If you don’t vote, you lose the right to complain.
+  </li>
+  <li>
+    A man without a vote is a man without protection.
+  </li>
+  <li>
+    Someone struggled for your right to vote. Use it.
+  </li>
+</ul>
+</h3>
 
-
-
 </div>
 </div>
 </div>
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-xs-12">
-      <center><b><h1><i>Nirvachit</i></h1></b></center>
-    </div>
-  </div>
-</div>
-
 
 <script>
 var myIndex = 0;
