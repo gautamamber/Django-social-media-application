@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Comment, News, Subscriber, SendNewsLetter, State, Party, ElectionUpdate
+from .models import Post, Comment, News, Ministry,Subscriber, SendNewsLetter, State, Party, ElectionUpdate
 from django.core.mail import send_mail
 
 # Register your models here.
@@ -10,6 +10,7 @@ admin.site.register(Subscriber)
 admin.site.register(State)
 admin.site.register(Party)
 admin.site.register(ElectionUpdate)
+admin.site.register(Ministry)
 
 
 @admin.register(SendNewsLetter)

@@ -130,4 +130,15 @@ class ElectionUpdate(models.Model):
 		verbose_name_plural = "Election Update"	
 
 
+class Ministry(models.Model):
+	party = models.CharField(max_length = 100, blank = True)
+	minisrty = models.CharField(max_length = 100, blank = True)
+	name = models.CharField(max_length = 100, blank = True)
+	state = models.CharField(max_length = 100, blank = True)
 
+	def __str__(self):
+		return str(self.name)
+
+	class Meta:
+		verbose_name = "Ministry"
+		verbose_name_plural = "Ministry"
