@@ -14,6 +14,7 @@ from django.core.mail import send_mail
 
 # About nirvachuit 
 def about(request):
+	print("Hello world")
 	return render(request, 'pollapp/about.html')
 
 
