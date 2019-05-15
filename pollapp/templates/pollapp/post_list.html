@@ -19,7 +19,7 @@ input[type=submit] {
         <div class="col-sm-7 col-xs-12">
             {% for post in posts %}
             <h1><b><a href="{% url 'pollapp:details' post.id %}">{{ post.title }}</a></b></h1>
-            <p>Published: {{ post.published_date }}</p>
+            
             <hr>
             <img src="{% if post.image %} {{ post.image.url }} {% else %} {% static 'img/default.jpg' %} {% endif %}" alt="..."  class = "img-responsive ">
             <h4><p class="w3-justify jumbotron jumbotron-fluid">

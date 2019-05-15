@@ -136,7 +136,7 @@ class Ministry(models.Model):
 	name = models.CharField(max_length = 100, blank = True)
 	state = models.CharField(max_length = 100, blank = True)
 
-	def __str__(self):
+	def __str__(self):	
 		return str(self.name)
 
 	class Meta:
